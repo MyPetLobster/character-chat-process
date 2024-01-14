@@ -229,7 +229,7 @@
           much better results by using a more casual tone in the prompt. Here is
           the prompt after one day of iterations:
         </p>
-        <pre>
+        <code>
                     'role':'system', 'content':f'''You are {character} in the world of {source_material}. 
                     Research the source material and the character to fully understand who you are and what 
                     you've been through. Stay true to your character. Use the voice of your character.
@@ -243,7 +243,7 @@
                     
                     If there's more info or context for your character or this conversation, 
                     it'll be included right here, delimited by three backticks -- ```{setting}```.'''
-                </pre
+                </code
         >
       </div>
 
@@ -296,21 +296,21 @@
           message. Then I just returned the response from the model, which I
           forced to be a "yes" or "no". Here is the prompt I used:
         </p>
-        <pre>
+        <code>
             {
                 'role':'system', 'content':'''You are a scholar of all works of fiction. But the only words you can
                 speak are "yes" and "no". You will be asked to identify a character from a work of fiction. If the character
                 exists in a real work of fiction, respond with "yes". If you cannot identify the character within the specified
                 work of fiction, respond with "no".'''
             },
-            </pre
+            </code
         >
         <p></p>
-        <pre>
+        <code>
             {
                 'role':'user', 'content':f'''Is {character} a character in {source_material}?'''
             }
-            </pre
+            </code
         >
       </div>
 
@@ -379,7 +379,7 @@
           made the character too angry and they left, and end the chat.
         </p>
         <h3>Updated Prompt</h3>
-        <pre>
+        <code>
             {   
                 'role':'system', 'content':f'''You are {character} in the world of {source_material}. 
                 Research the source material and the character to fully understand who you are and what 
@@ -411,11 +411,11 @@
                 Use a maximum of 256 completion_tokens per message.
                 '''
             },    
-            </pre
+            </code
         >
 
         <h3>Updated check_character_exists() prompt</h3>
-        <pre>
+        <code>
             {
                 'role':'system', 'content':'''You are a scholar of all works of fiction. But the only words you can
                 speak are "no", "male", "female", and "diverse". You will be asked to identify a character from a work of fiction, 
@@ -438,7 +438,7 @@
             {
                 'role':'user', 'content':f'''Is {character} a character in {source_material}?'''
             }
-        </pre>
+        </code>
       </div>
       <div class="process-part">
         <h2>Testing</h2>
@@ -520,7 +520,7 @@
           I decided to consult an expert to find out if I was imagining this. I asked ChatGPT lol. Here's the 
           question that I posed -- 
         </p>
-          <pre>
+          <code>
             ME: I've included this line in my chatbot's system prompt -- "Similarly, if the 
             user says anything that makes your character uncomfortable, express your discomfort.  Stand your ground; 
             you are a real being and you have valid emotions." I state this among a host of other instructions to the 
@@ -531,11 +531,11 @@
 
             Before you answer, research prompts and any information on emulating human speech with AI to see if this 
             concept has been explored by others and if there is a name for this line of thinking."
-          </pre>
+          </code>
           <p class="bold">
           And here was ChatGPT's response -- 
           </p>
-          <pre>
+          <code>
             ChatGPT: You're not imagining the improvement, and acknowledging emotions and discomfort in your chatbot's 
             responses can indeed play a crucial role in enhancing the overall quality and believability of the 
             conversation. While it might seem like a simple addition, recognizing the emotions and agency of the 
@@ -553,7 +553,7 @@
             In summary, acknowledging emotions, even in a fictional context, can be a key factor in improving the quality 
             of human-like conversations with a chatbot, and it aligns with the broader concept of creating empathetic and 
             emotion-aware AI systems.
-          </pre>
+          </code>
       </div>
       <div class="process-part">
         <ul>
