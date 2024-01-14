@@ -2,6 +2,7 @@
 body {
   font-family: "Alegreya", serif;
   background-color: #f0f0f0;
+  color: #10200c;
   margin: 0;
   padding: 0;
 }
@@ -16,8 +17,19 @@ ul {
   padding-left: 20px;
 }
 
+.top-container-container,
+.full-process,
+.process-part,
+.goals,
+.tech-used {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Top Container */
 .top-container {
+  max-width: 550px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 1em;
@@ -27,6 +39,7 @@ ul {
 
 /* Process Parts */
 .process-part {
+  max-width: 450px;
   background-color: #e6e6e6;
   margin: 1em;
   padding: 1em;
