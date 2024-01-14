@@ -7,7 +7,11 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
   padding: 0.5em;
   text-align: center;
@@ -53,14 +57,16 @@ code {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-  .top-container, .process-part {
+  .top-container,
+  .process-part {
     margin: 0.5em;
     padding: 0.5em;
   }
 }
 
 /* Goals and Tech Used Sections */
-.goals, .tech-used {
+.goals,
+.tech-used {
   background-color: #e1f5d9;
   padding: 1em;
   margin: 1em;
@@ -69,5 +75,5 @@ code {
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }

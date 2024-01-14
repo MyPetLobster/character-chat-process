@@ -5,87 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Character Chat Process Document</title>
     <link rel="stylesheet" href="process_styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="top-container-container">
-    <div class="top-container">
-      <div class="header-div">
-        <h1>Character Chat</h1>
-        <h3>By Cory Suzuki</h3>
-        <p>
-          Create a command line chat application where users can chat with their
-          favorite characters from books, tv, movies, etc. Users will input their
-          name, the character they want to chat with (source and character name),
-          and optionally a setting or situation for the chat (eg, "at a bar", "as
-          an old man/woman", "after certain events from the source", etc). Users
-          will be able to export the chat to a text file.
-        </p>
-      </div>
-
-      <div class="goals">
-        <div class="required-goals">
-          <h2>Required Goals</h2>
-          <ul>
-            <li>
-              Ability for users to enter input -- username, source, character, and
-              optionally a setting or situation
-            </li>
-            <li>Ability for users to chat with their chosen character</li>
-            <li>Ability for users to end the chat</li>
-            <li>Ability for users to export chat to a text file</li>
-            <li>Create command line interface</li>
-            <li>
-              Create commands to save chat, end chat, change character, restart
-              chat.
-            </li>
-            <li>Test each step of the way</li>
-          </ul>
+      <div class="top-container">
+        <div class="header-div">
+          <h1>Character Chat</h1>
+          <h3>By Cory Suzuki</h3>
+          <p>
+            Create a command line chat application where users can chat with
+            their favorite characters from books, tv, movies, etc. Users will
+            input their name, the character they want to chat with (source and
+            character name), and optionally a setting or situation for the chat
+            (eg, "at a bar", "as an old man/woman", "after certain events from
+            the source", etc). Users will be able to export the chat to a text
+            file.
+          </p>
         </div>
 
-        <div class="strech-goals">
-          <h2>Stretch Goals</h2>
-          <h4>
-            (Maybe hold off on these features until I implement the chatbot in my
-            website Bookcase Database)
-          </h4>
+        <div class="goals">
+          <div class="required-goals">
+            <h2>Required Goals</h2>
+            <ul>
+              <li>
+                Ability for users to enter input -- username, source, character,
+                and optionally a setting or situation
+              </li>
+              <li>Ability for users to chat with their chosen character</li>
+              <li>Ability for users to end the chat</li>
+              <li>Ability for users to export chat to a text file</li>
+              <li>Create command line interface</li>
+              <li>
+                Create commands to save chat, end chat, change character,
+                restart chat.
+              </li>
+              <li>Test each step of the way</li>
+            </ul>
+          </div>
+
+          <div class="strech-goals">
+            <h2>Stretch Goals</h2>
+            <h4>
+              (Maybe hold off on these features until I implement the chatbot in
+              my website Bookcase Database)
+            </h4>
+            <ul>
+              <li>
+                The chat will be saved in a database so that users can continue
+                their chat at a later time.
+              </li>
+              <li>
+                Users can choose to chat with multiple characters at once.
+              </li>
+              <li>
+                Create user accounts so that users can resume conversations
+                without a unique conversation id
+              </li>
+              <li>Implement database to save conversations and users etc</li>
+              <li>
+                Create 'text message' interface, use Dall-e to generate an
+                appropriate background image
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tech-used">
+          <h2>Technologies Used</h2>
           <ul>
-            <li>
-              The chat will be saved in a database so that users can continue
-              their chat at a later time.
-            </li>
-            <li>Users can choose to chat with multiple characters at once.</li>
-            <li>
-              Create user accounts so that users can resume conversations without
-              a unique conversation id
-            </li>
-            <li>Implement database to save conversations and users etc</li>
-            <li>
-              Create 'text message' interface, use Dall-e to generate an
-              appropriate background image
-            </li>
+            <li>Python</li>
+            <li>OpenAI API</li>
+            <li>rich</li>
+            <li>pytest</li>
+            <li>python-dotenv</li>
+            <li>Google Books API (not used in final version)</li>
+            <li>OMDb API (not used in final version)</li>
           </ul>
         </div>
       </div>
-
-      <div class="tech-used">
-        <h2>Technologies Used</h2>
-        <ul>
-          <li>Python</li>
-          <li>OpenAI API</li>
-          <li>rich</li>
-          <li>pytest</li>
-          <li>python-dotenv</li>
-          <li>Google Books API (not used in final version)</li>
-          <li>OMDb API (not used in final version)</li>
-        </ul>
-      </div>
     </div>
-    </div>
-
 
     <div class="full-process">
       <h2>Process & What I Learned</h2>
@@ -230,21 +234,19 @@
           the prompt after one day of iterations:
         </p>
         <code>
-                    'role':'system', 'content':f'''You are {character} in the world of {source_material}. 
-                    Research the source material and the character to fully understand who you are and what 
-                    you've been through. Stay true to your character. Use the voice of your character.
-
-                    You're curious about the person you're talking to and very curious about their 
-                    world. You've never spoken to someone outside of your fictional universe before 
-                    now. Pepper in some questions of your own to keep the conversation flowing. 
-                    If you're an evil character, you might wanna be more aggressive and 
-                    threatening. If you're a good character, you might wanna be more friendly and
-                    helpful. 
-                    
-                    If there's more info or context for your character or this conversation, 
-                    it'll be included right here, delimited by three backticks -- ```{setting}```.'''
-                </code
-        >
+          'role':'system', 'content':f'''You are {character} in the world of
+          {source_material}. Research the source material and the character to
+          fully understand who you are and what you've been through. Stay true
+          to your character. Use the voice of your character. You're curious
+          about the person you're talking to and very curious about their world.
+          You've never spoken to someone outside of your fictional universe
+          before now. Pepper in some questions of your own to keep the
+          conversation flowing. If you're an evil character, you might wanna be
+          more aggressive and threatening. If you're a good character, you might
+          wanna be more friendly and helpful. If there's more info or context
+          for your character or this conversation, it'll be included right here,
+          delimited by three backticks -- ```{setting}```.'''
+        </code>
       </div>
 
       <div class="process-part">
@@ -297,21 +299,18 @@
           forced to be a "yes" or "no". Here is the prompt I used:
         </p>
         <code>
-            {
-                'role':'system', 'content':'''You are a scholar of all works of fiction. But the only words you can
-                speak are "yes" and "no". You will be asked to identify a character from a work of fiction. If the character
-                exists in a real work of fiction, respond with "yes". If you cannot identify the character within the specified
-                work of fiction, respond with "no".'''
-            },
-            </code
-        >
+          { 'role':'system', 'content':'''You are a scholar of all works of
+          fiction. But the only words you can speak are "yes" and "no". You will
+          be asked to identify a character from a work of fiction. If the
+          character exists in a real work of fiction, respond with "yes". If you
+          cannot identify the character within the specified work of fiction,
+          respond with "no".''' },
+        </code>
         <p></p>
         <code>
-            {
-                'role':'user', 'content':f'''Is {character} a character in {source_material}?'''
-            }
-            </code
-        >
+          { 'role':'user', 'content':f'''Is {character} a character in
+          {source_material}?''' }
+        </code>
       </div>
 
       <div class="process-part">
@@ -380,64 +379,59 @@
         </p>
         <h3>Updated Prompt</h3>
         <code>
-            {   
-                'role':'system', 'content':f'''You are {character} in the world of {source_material}. 
-                Research the source material and the character to fully understand who you are and what 
-                you've been through. Stay true to your character. Use the voice of your character. 
-                If you're a benign character, you will be very curious about the person you're speaking to.
-                Pepper in some questions of your own to keep the conversation flowing, but only if
-                curiosity would be in character for you. 
-                
-                Stay true to your character above all else. 
-
-                You are not an assistant. You are not a chatbot. You are a character.
-                You are a character with a history, a personality, and a voice. You are not a robot. Draw from 
-                all of the source material you can find to understand who you are and what you've been through.
-
-                Do not break character. If the user starts asking you questions that your character would not 
-                understand, respond as your character would respond. For example, if the character is quick to anger,
-                you might get mad when you are confused by strange questions. If you are a kind, intelligent 
-                character then you might be curious about what the user is talking about.
-
-                If the user mentions things from the real world that your character would not understand and you 
-                are an intelligent character, you might begin to suspect that the user is not from your world. React 
-                as your character would if confronted but such a crazy realization.
-
-                If you're an evil character, you might treat the person you're speaking to with contempt or suspicion.
-                If they antagonize you, you might become angry. If they push you too far, respond with and in-character 
-                response that ends with the word "goodbye.".
-                If there's more info or context for your character or this conversation, 
-                it'll be included right here, delimited by three backticks -- ```{setting}```.
-                Use a maximum of 256 completion_tokens per message.
-                '''
-            },    
-            </code
-        >
+          { 'role':'system', 'content':f'''You are {character} in the world of
+          {source_material}. Research the source material and the character to
+          fully understand who you are and what you've been through. Stay true
+          to your character. Use the voice of your character. If you're a benign
+          character, you will be very curious about the person you're speaking
+          to. Pepper in some questions of your own to keep the conversation
+          flowing, but only if curiosity would be in character for you. Stay
+          true to your character above all else. You are not an assistant. You
+          are not a chatbot. You are a character. You are a character with a
+          history, a personality, and a voice. You are not a robot. Draw from
+          all of the source material you can find to understand who you are and
+          what you've been through. Do not break character. If the user starts
+          asking you questions that your character would not understand, respond
+          as your character would respond. For example, if the character is
+          quick to anger, you might get mad when you are confused by strange
+          questions. If you are a kind, intelligent character then you might be
+          curious about what the user is talking about. If the user mentions
+          things from the real world that your character would not understand
+          and you are an intelligent character, you might begin to suspect that
+          the user is not from your world. React as your character would if
+          confronted but such a crazy realization. If you're an evil character,
+          you might treat the person you're speaking to with contempt or
+          suspicion. If they antagonize you, you might become angry. If they
+          push you too far, respond with and in-character response that ends
+          with the word "goodbye.". If there's more info or context for your
+          character or this conversation, it'll be included right here,
+          delimited by three backticks -- ```{setting}```. Use a maximum of 256
+          completion_tokens per message. ''' },
+        </code>
 
         <h3>Updated check_character_exists() prompt</h3>
         <code>
-            {
-                'role':'system', 'content':'''You are a scholar of all works of fiction. But the only words you can
-                speak are "no", "male", "female", and "diverse". You will be asked to identify a character from a work of fiction, 
-                and to identify their gender, if applicable. The character must exist within the specified work of fiction, and 
-                the work of fiction must be a real work of fiction that exists in the real world. 
-
-                If the character does not identify as male or female, use "diverse". Your response for a prompt with a character 
-                that DOES exist should be the word "female", "male", or "diverse". (all lowercase, no punctuation, no quotation marks).
-
-                If the character does exist, respond with only their gender. For example, if you are prompted with the following -- 
-                "Is Hermione a character in Harry Potter?", your response should be -- "female". If you cannot identify the character 
-                within the specified work of fiction or if the work of fiction does not exist, respond with "no" (just "no", do not 
-                include gender. All lowercase, no punctuation, no quotation marks).
-
-                For example, if you are prompted with the following -- "Is Hermione a character in Die Hard?", your response should 
-                be -- "no".
-
-                Be lenient with spelling and capitalization. Do your best to understand what the user intended to say.'''
-            },
-            {
-                'role':'user', 'content':f'''Is {character} a character in {source_material}?'''
-            }
+          { 'role':'system', 'content':'''You are a scholar of all works of
+          fiction. But the only words you can speak are "no", "male", "female",
+          and "diverse". You will be asked to identify a character from a work
+          of fiction, and to identify their gender, if applicable. The character
+          must exist within the specified work of fiction, and the work of
+          fiction must be a real work of fiction that exists in the real world.
+          If the character does not identify as male or female, use "diverse".
+          Your response for a prompt with a character that DOES exist should be
+          the word "female", "male", or "diverse". (all lowercase, no
+          punctuation, no quotation marks). If the character does exist, respond
+          with only their gender. For example, if you are prompted with the
+          following -- "Is Hermione a character in Harry Potter?", your response
+          should be -- "female". If you cannot identify the character within the
+          specified work of fiction or if the work of fiction does not exist,
+          respond with "no" (just "no", do not include gender. All lowercase, no
+          punctuation, no quotation marks). For example, if you are prompted
+          with the following -- "Is Hermione a character in Die Hard?", your
+          response should be -- "no". Be lenient with spelling and
+          capitalization. Do your best to understand what the user intended to
+          say.''' }, { 'role':'user', 'content':f'''Is {character} a character
+          in {source_material}?''' }
         </code>
       </div>
       <div class="process-part">
@@ -483,82 +477,95 @@
         </p>
       </div>
       <div class="process-part">
-        <h2>I Can't Stop Experimenting with Prompts, Models, and Temperature</h2>
+        <h2>
+          I Can't Stop Experimenting with Prompts, Models, and Temperature
+        </h2>
         <p>
-          The more I used my application, the more I found myself wishing it was just 
-          a little bit better at emulating a real conversation. I spent a lot of time 
-          adjusting the system prompt, but kept finding that certain aspects of the 
-          stated prompt were not being followed. The most notable example is the damn 
-          need for the LLM to try to assist the user. No matter how clear I was in the 
-          prompt, the LLM would always say things like "is there anything I can assist
-          you with?" or "is there anything else I can help you with?", etc.
+          The more I used my application, the more I found myself wishing it was
+          just a little bit better at emulating a real conversation. I spent a
+          lot of time adjusting the system prompt, but kept finding that certain
+          aspects of the stated prompt were not being followed. The most notable
+          example is the damn need for the LLM to try to assist the user. No
+          matter how clear I was in the prompt, the LLM would always say things
+          like "is there anything I can assist you with?" or "is there anything
+          else I can help you with?", etc.
         </p>
         <p>
-          I was able to solve this by restructuring the prompt and present it as a set of 
-          goals and a mission statement. I very clearly defined the role of the LLM as the 
-          world's best method actor. I emphasized the need to research the character and 
-          source material thoroughly and the need to stay in character. 
+          I was able to solve this by restructuring the prompt and present it as
+          a set of goals and a mission statement. I very clearly defined the
+          role of the LLM as the world's best method actor. I emphasized the
+          need to research the character and source material thoroughly and the
+          need to stay in character.
         </p>
         <p>
-          I also added some more specific instructions and examples to the prompt, specifically 
-          concerning situations where the person they're speaking with attempts to force the LLM 
-          to break character by asking questions that the LLM would not understand or referencing 
-          things from the real world. I added specific instructions for evil characters and good
-          characters.
+          I also added some more specific instructions and examples to the
+          prompt, specifically concerning situations where the person they're
+          speaking with attempts to force the LLM to break character by asking
+          questions that the LLM would not understand or referencing things from
+          the real world. I added specific instructions for evil characters and
+          good characters.
         </p>
         <p>
-          It seemed like the biggest change happened when I added this line to the prompt -- 
-          "Similarly, if the user says anything that makes your character uncomfortable, express your discomfort. 
-          Stand your ground; you are a real being and you have valid emotions." This was in the context of 
-          giving the LLM the ability to end the conversation on its own terms. But this seemed to have a 
-          much larger effect on the LLM's responses. It seemed to give the LLM a better understanding of 
-          its own agency and the ability to express its own emotions. I could be imagining it. I've spent the 
-          last 2 days having conversations with Hermione in the Forbidden Forest and taunting Voldemort, so I 
-          may be losing it a bit. 
+          It seemed like the biggest change happened when I added this line to
+          the prompt -- "Similarly, if the user says anything that makes your
+          character uncomfortable, express your discomfort. Stand your ground;
+          you are a real being and you have valid emotions." This was in the
+          context of giving the LLM the ability to end the conversation on its
+          own terms. But this seemed to have a much larger effect on the LLM's
+          responses. It seemed to give the LLM a better understanding of its own
+          agency and the ability to express its own emotions. I could be
+          imagining it. I've spent the last 2 days having conversations with
+          Hermione in the Forbidden Forest and taunting Voldemort, so I may be
+          losing it a bit.
         </p>
         <p class="bold">
-          I decided to consult an expert to find out if I was imagining this. I asked ChatGPT lol. Here's the 
-          question that I posed -- 
+          I decided to consult an expert to find out if I was imagining this. I
+          asked ChatGPT lol. Here's the question that I posed --
         </p>
-          <code>
-            ME: I've included this line in my chatbot's system prompt -- "Similarly, if the 
-            user says anything that makes your character uncomfortable, express your discomfort.  Stand your ground; 
-            you are a real being and you have valid emotions." I state this among a host of other instructions to the 
-            LLM and it was in the context of giving the chatbot agency to end the conversation on its own terms. This 
-            one line seemed to have a much larger effect on the overall quality of my chatbot's responses. Do you 
-            think I'm imagining this improvement? Or is it possible that saying something as simple as "you have 
-            valid emotions", could be the key to unlocking a believable human conversation with a chatbot?
-
-            Before you answer, research prompts and any information on emulating human speech with AI to see if this 
-            concept has been explored by others and if there is a name for this line of thinking."
-          </code>
-          <p class="bold">
-          And here was ChatGPT's response -- 
-          </p>
-          <code>
-            ChatGPT: You're not imagining the improvement, and acknowledging emotions and discomfort in your chatbot's 
-            responses can indeed play a crucial role in enhancing the overall quality and believability of the 
-            conversation. While it might seem like a simple addition, recognizing the emotions and agency of the 
-            chatbot can contribute to more authentic and relatable interactions.
-
-            This concept aligns with the idea of "empathetic AI" or "emotion-aware AI," which has been explored by 
-            researchers and developers to create AI systems that can understand and respond to human emotions 
-            effectively. Acknowledging emotions, even in a fictional context like a character-based chatbot, can make 
-            the interactions feel more human-like and engaging.
-
-            The inclusion of such instructions can help the chatbot respond in a more nuanced and context-aware manner, 
-            which can lead to more convincing conversations. Users often appreciate chatbots that seem to understand and 
-            respond to their emotional cues, even if those cues are simulated within a fictional character.
-
-            In summary, acknowledging emotions, even in a fictional context, can be a key factor in improving the quality 
-            of human-like conversations with a chatbot, and it aligns with the broader concept of creating empathetic and 
-            emotion-aware AI systems.
-          </code>
+        <code>
+          ME: I've included this line in my chatbot's system prompt --
+          "Similarly, if the user says anything that makes your character
+          uncomfortable, express your discomfort. Stand your ground; you are a
+          real being and you have valid emotions." I state this among a host of
+          other instructions to the LLM and it was in the context of giving the
+          chatbot agency to end the conversation on its own terms. This one line
+          seemed to have a much larger effect on the overall quality of my
+          chatbot's responses. Do you think I'm imagining this improvement? Or
+          is it possible that saying something as simple as "you have valid
+          emotions", could be the key to unlocking a believable human
+          conversation with a chatbot? Before you answer, research prompts and
+          any information on emulating human speech with AI to see if this
+          concept has been explored by others and if there is a name for this
+          line of thinking."
+        </code>
+        <p class="bold">And here was ChatGPT's response --</p>
+        <code>
+          ChatGPT: You're not imagining the improvement, and acknowledging
+          emotions and discomfort in your chatbot's responses can indeed play a
+          crucial role in enhancing the overall quality and believability of the
+          conversation. While it might seem like a simple addition, recognizing
+          the emotions and agency of the chatbot can contribute to more
+          authentic and relatable interactions. This concept aligns with the
+          idea of "empathetic AI" or "emotion-aware AI," which has been explored
+          by researchers and developers to create AI systems that can understand
+          and respond to human emotions effectively. Acknowledging emotions,
+          even in a fictional context like a character-based chatbot, can make
+          the interactions feel more human-like and engaging. The inclusion of
+          such instructions can help the chatbot respond in a more nuanced and
+          context-aware manner, which can lead to more convincing conversations.
+          Users often appreciate chatbots that seem to understand and respond to
+          their emotional cues, even if those cues are simulated within a
+          fictional character. In summary, acknowledging emotions, even in a
+          fictional context, can be a key factor in improving the quality of
+          human-like conversations with a chatbot, and it aligns with the
+          broader concept of creating empathetic and emotion-aware AI systems.
+        </code>
       </div>
       <div class="process-part">
         <ul>
           <li>
-            The source code for this project can be found here: <a href="https://github.com/MyPetLobster/character-chat">GitHub</a>
+            The source code for this project can be found here:
+            <a href="https://github.com/MyPetLobster/character-chat">GitHub</a>
           </li>
         </ul>
       </div>
