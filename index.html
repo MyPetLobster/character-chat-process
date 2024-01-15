@@ -562,6 +562,66 @@
         </code>
       </div>
       <div class="process-part">
+        <h2>Pytest and Final Thoughts</h2>
+        <p>
+          In all honesty, I've worked on a lot of projects since I first learned
+          about Pytest and test-driven development. But I've never actually
+          written tests for any of my projects. Not a single one :|. So when I
+          saw the requirement to write tests for this project, I had to go back
+          and rewatch the lecture from CS50p Week 5: Unit Tests. After
+          refreshing my memory on how to even set up Python tests, I was stumped
+          about how to actually test a dynamic chatbot.
+        </p>
+        <p>
+          The problem was that I wanted my chatbot to be able to handle all
+          sorts of typos and still figure out what the user was trying to say.
+          OpenAI's API is so good at this that it would be a shame to limit the
+          chatbot to only a few specific phrases. I also wanted to test
+          different combinations of input without writing 50 separate tests. I
+          went googling more about Pytest and discovered the parametrize
+          decorator. This was exactly what I needed. I was able to create a few
+          lists of valid and invalid inputs and then use the parametrize
+          decorator to run the same test for different combinations of inputs.
+        </p>
+        <p>
+          Great, it can validate characters. But what about testing the
+          conversation itself? I figured the simplest method of testing would be
+          to provide input then ask the chatbot who they are and where they are.
+          At first, I included a prompt in the test that read something like
+          "Please provide your name and location separated by a comma, all
+          lowercase". When I first wrote the tests, this was working great.
+          However, I continued playing around with the chatbot after I was
+          "finished", and the initial system message prompt evolved quite a bit.
+        </p>
+        <p>
+          My chatbot was working TOO well for that test. I emphasized the need
+          for the chatbot to never reveal that it is a chatbot and gave it
+          detailed instructions about staying in character. I guess that was
+          enough that the chatbot refused to follow the robot like formatting
+          request of the test prompt. This was an easy fix. I took the chatbot's
+          response and used the split method to separate all the words in the
+          response. Then I simply checked if the characters name and location
+          were in the response. Easy enough!
+        </p>
+        <p>
+          I am curious about ways that other people have tested chatbots. My
+          next personal project is going to be creating a chatbot of myself. So
+          I'll definitely do some more reading before that!
+        </p>
+        <p class="disclosure">
+          Full disclousure: I didn't write any tests until the project was
+          basically complete. I vow to write at least some tests before I start
+          coding my next project. I just struggle to get into that mindset. Much
+          of the time I'm coding while coming up with ideas. But for my last two
+          projects, I forced myself to use a trello board. I can't decide if
+          it's helping or not, but it definitely doesn't hurt. So I'll contuniue
+          to give this way of working a fair shake, including a little bit of
+          TDD. At worst, at least I'll know a little more about how that all
+          works, so I could work with others on projects with that style of
+          development in the future.
+        </p>
+      </div>
+      <div class="process-part">
         <ul>
           <li>
             The source code for this project can be found here:

@@ -14,7 +14,13 @@ h4,
 p {
   margin: 0;
   padding: 0.5em;
-  text-align: center;
+  text-align: left;
+  text-indent: 30px;
+}
+.disclosure {
+  font-size: 12px;
+  font-style: italic;
+  color: #585454;
 }
 
 ul {
